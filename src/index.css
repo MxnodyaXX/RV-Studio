@@ -1,0 +1,178 @@
+@import 'tailwindcss';
+
+/* Dark mode follows the `dark` class on <html> (set from the theme preference). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Brand */
+  --color-navy-50: #f1f5fa;
+  --color-navy-100: #dde6f1;
+  --color-navy-200: #b9cbe0;
+  --color-navy-700: #1d3654;
+  --color-navy-800: #182e48;
+  --color-navy-900: #14263d;
+  --color-navy-950: #0d1a2b;
+
+  /* Semantic tokens (light) — overridden for dark below */
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-primary: #14263d;
+  --color-primary-hover: #1d3654;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #64748b;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-subtle: #f8fafc;
+  --color-accent: #2563eb;
+  --color-accent-foreground: #ffffff;
+  --color-accent-soft: #eff6ff;
+  --color-accent-text: #1d4ed8;
+  --color-border: #e2e8f0;
+  --color-input: #cbd5e1;
+  --color-ring: #2563eb;
+  --color-destructive: #dc2626;
+  --color-placeholder: #94a3b8;
+  --color-skeleton: #e2e8f0;
+  --color-sidebar: #14263d;
+  --color-sidebar-border: #0d1a2b;
+  --color-tile: #f1f5fa;
+  --color-tile-foreground: #14263d;
+  --color-tile-ring: #dde6f1;
+
+  /* Finance: chart fills use the brand pair; text uses darker steps for contrast. */
+  --color-income: #10b981;
+  --color-income-text: #047857;
+  --color-income-soft: #ecfdf5;
+  --color-income-ring: #a7f3d0;
+  --color-expense: #ef4444;
+  --color-expense-text: #b91c1c;
+  --color-expense-soft: #fef2f2;
+  --color-expense-ring: #fecaca;
+  --color-warning: #d97706;
+  --color-warning-text: #92400e;
+  --color-warning-soft: #fffbeb;
+  --color-warning-ring: #fde68a;
+
+  /* Business identity accents (labels always accompany these colours). */
+  --color-biz-studio: #7c3aed;
+  --color-biz-frame: #d97706;
+  --color-biz-camera: #2563eb;
+  --color-biz-gift: #db2777;
+
+  --shadow-card: 0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.06);
+  --shadow-elevated: 0 10px 30px -12px rgb(15 23 42 / 0.25);
+
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  @keyframes shimmer {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.55;
+    }
+  }
+}
+
+.dark {
+  color-scheme: dark;
+  --color-navy-50: #16233a;
+  --color-navy-100: #22324d;
+  --color-background: #0a111e;
+  --color-foreground: #e2e8f0;
+  --color-card: #0f1a2c;
+  --color-card-foreground: #e2e8f0;
+  --color-primary: #dbe6f5;
+  --color-primary-hover: #c2d3ea;
+  --color-primary-foreground: #0d1a2b;
+  --color-muted: #18243a;
+  --color-muted-foreground: #94a3b8;
+  --color-subtle: #121e32;
+  --color-accent: #3b82f6;
+  --color-accent-soft: #14233f;
+  --color-accent-text: #93c5fd;
+  --color-border: #22314a;
+  --color-input: #33455f;
+  --color-ring: #60a5fa;
+  --color-destructive: #f87171;
+  --color-placeholder: #64748b;
+  --color-skeleton: #1d2a40;
+  --color-sidebar: #08101c;
+  --color-sidebar-border: #1a2740;
+  --color-tile: #16233a;
+  --color-tile-foreground: #dbe6f5;
+  --color-tile-ring: #22324d;
+  --color-income: #10b981;
+  --color-income-text: #34d399;
+  --color-income-soft: #0d2a22;
+  --color-income-ring: #14533f;
+  --color-expense: #ef4444;
+  --color-expense-text: #f87171;
+  --color-expense-soft: #2c1417;
+  --color-expense-ring: #5c1d22;
+  --color-warning-text: #fbbf24;
+  --color-warning-soft: #2b2010;
+  --color-warning-ring: #5b4114;
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.35);
+  --shadow-elevated: 0 12px 32px -12px rgb(0 0 0 / 0.65);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  input[type='date']::-webkit-calendar-picker-indicator,
+  input[type='datetime-local']::-webkit-calendar-picker-indicator,
+  input[type='time']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+  .dark input[type='date']::-webkit-calendar-picker-indicator,
+  .dark input[type='datetime-local']::-webkit-calendar-picker-indicator,
+  .dark input[type='time']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility safe-bottom {
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+
+/* Printable receipts and reports */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-area {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
